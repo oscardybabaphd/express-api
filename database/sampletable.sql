@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2019 at 10:21 PM
+-- Generation Time: Apr 01, 2019 at 08:30 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -31,8 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `sampletable` (
   `id` int(11) NOT NULL,
   `city` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
+  `startDate` date NOT NULL,
+  `endDate` date NOT NULL,
   `price` decimal(5,2) NOT NULL,
   `status` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
   `color` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -42,7 +42,7 @@ CREATE TABLE `sampletable` (
 -- Dumping data for table `sampletable`
 --
 
-INSERT INTO `sampletable` (`id`, `city`, `start_date`, `end_date`, `price`, `status`, `color`) VALUES
+INSERT INTO `sampletable` (`id`, `city`, `startDate`, `endDate`, `price`, `status`, `color`) VALUES
 (1, 'Neftegorsk oscar', '2012-06-02', '2014-03-01', '55.82', 'Seldom', '#903761'),
 (2, 'Lancai Test', '2012-05-04', '2014-06-23', '22.49', 'Once', '#ffffff'),
 (3, 'Hekou', '2012-04-03', '2014-03-01', '9.48', 'Often', '#903761'),
@@ -619,7 +619,7 @@ INSERT INTO `sampletable` (`id`, `city`, `start_date`, `end_date`, `price`, `sta
 (574, 'Ndélé', '2015-06-00', '2013-09-01', '6.76', 'Often', '#beaed5'),
 (575, 'Luniao', '2011-08-04', '2015-04-04', '84.15', 'Yearly', '#27a007'),
 (576, 'Villeneuve-d\'Ascq', '2012-07-03', '2015-07-00', '0.80', 'Once', '#e96e11'),
-(577, 'Miastków Kościelny', '2015-10-04', '2013-02-06', '82.23', 'Never', '#4dd7b0'),
+(577, 'Miastków Kościelny', '2016-10-04', '2013-02-06', '82.23', 'Never', '#4dd7b0'),
 (578, 'Sipirok', '2014-03-05', '2014-06-01', '71.62', 'Often', '#1047ec'),
 (579, 'Frederiksberg', '2012-06-01', '2013-02-00', '89.56', 'Once', '#6feffa'),
 (580, 'Nizhniy Tagil', '2011-10-02', '2014-08-03', '3.57', 'Daily', '#5a6f8a'),
@@ -707,7 +707,7 @@ INSERT INTO `sampletable` (`id`, `city`, `start_date`, `end_date`, `price`, `sta
 (662, 'Krajan Langenharjo', '2013-09-03', '2014-07-02', '85.98', 'Never', '#514321'),
 (663, 'Mungyeong', '2015-00-00', '2014-04-01', '70.23', 'Weekly', '#4670d5'),
 (664, 'Luohe', '2011-08-05', '2014-01-06', '11.35', 'Weekly', '#2f38e4');
-INSERT INTO `sampletable` (`id`, `city`, `start_date`, `end_date`, `price`, `status`, `color`) VALUES
+INSERT INTO `sampletable` (`id`, `city`, `startDate`, `endDate`, `price`, `status`, `color`) VALUES
 (665, 'Todorovo', '2014-08-00', '2015-03-02', '73.86', 'Often', '#38611e'),
 (666, 'Ya‘bad', '2012-02-06', '2014-11-04', '88.62', 'Daily', '#0a7c6f'),
 (667, 'Borabue', '2015-04-02', '2014-11-04', '56.96', 'Once', '#40b16f'),
@@ -985,10 +985,10 @@ INSERT INTO `sampletable` (`id`, `city`, `start_date`, `end_date`, `price`, `sta
 (939, 'Logroño', '2013-02-00', '2013-01-03', '7.10', 'Seldom', '#93d4d2'),
 (940, 'Lojigawaran', '2011-08-02', '2013-01-06', '16.01', 'Once', '#fb4150'),
 (941, 'Itaquaquecetuba', '2013-05-03', '2015-06-06', '26.04', 'Weekly', '#1b3058'),
-(942, 'Chandmanĭ', '2012-03-00', '2015-01-03', '53.90', 'Daily', '#f4e6a4'),
+(942, 'Chandmanĭ', '2012-05-20', '2015-01-03', '53.90', 'Daily', '#f4e6a4'),
 (943, 'Al Bayḑā’', '2012-02-06', '2015-01-02', '9.63', 'Weekly', '#ca0e96'),
 (944, 'Shizikeng', '2012-08-06', '2013-09-06', '88.06', 'Once', '#9e211f'),
-(945, 'Penha Longa', '2013-02-05', '2014-01-01', '34.87', 'Never', '#b3dd0e'),
+(945, 'Penha Long', '2013-02-05', '2014-01-01', '34.87', 'Never', '#b3dd0e'),
 (946, 'Gandu', '2013-01-00', '2015-09-04', '84.90', 'Often', '#ddac82'),
 (947, 'Malitubog', '2015-07-06', '2015-06-01', '11.37', 'Daily', '#f4c2db'),
 (948, 'Pochayiv', '2014-07-03', '2015-10-04', '93.38', 'Often', '#2faa67'),
@@ -1036,18 +1036,15 @@ INSERT INTO `sampletable` (`id`, `city`, `start_date`, `end_date`, `price`, `sta
 (990, 'Jaworzyna Śląska', '2013-03-06', '2014-07-04', '36.00', 'Daily', '#e85d52'),
 (991, 'Ágios Matthaíos', '2013-09-03', '2014-04-02', '31.33', 'Often', '#1bce0e'),
 (992, 'San Sebastián de Yalí', '2012-07-05', '2013-09-02', '58.49', 'Never', '#843481'),
-(993, 'Tabu', '2012-08-01', '2014-11-04', '77.42', 'Yearly', '#7269a1'),
-(994, 'Sŭngho 1-tong', '2014-04-05', '2014-09-00', '86.40', 'Yearly', '#082b3c'),
+(993, 'Tabu o', '2012-08-01', '2014-11-04', '77.42', 'Yearly', '#7269a1'),
+(994, 'Sŭngho 1-tong k', '2014-04-05', '2017-05-12', '86.40', 'Yearly', '#082b3c'),
 (995, 'San Pedro', '2015-07-06', '2015-02-04', '42.76', 'Never', '#2e4d49'),
 (996, 'Pu’an', '2015-08-02', '2013-10-00', '88.17', 'Monthly', '#8cf059'),
-(997, 'Konstantynów Łódzki', '2013-10-05', '2013-04-00', '68.18', 'Seldom', '#ff506b'),
-(998, 'Göteborg', '2015-09-01', '2017-06-04', '82.27', 'Yearly', '#6504df'),
+(997, 'Konstantynów Łódzki', '2013-10-05', '2015-05-03', '68.18', 'Seldom', '#ff506b'),
+(998, 'Göteborg new', '2015-09-01', '2017-06-04', '82.27', 'Yearly', '#6504df'),
 (999, 'Paraguarí', '2011-09-04', '2014-11-04', '87.39', 'Never', '#7c953a'),
-(1000, 'Youssoufia', '2014-10-04', '2015-11-02', '56.04', 'Once', '#440709'),
-(1001, 'Leonard', '2013-05-06', '2014-05-08', '40.60', 'Never', '#f5f5f5'),
-(1002, 'Nigeria lagos', '2016-06-05', '2018-05-08', '600.60', 'Never', '#f5f5f5'),
-(1003, 'Lokoja', '2016-06-07', '2018-04-02', '700.00', 'Never', '#ff506b'),
-(1004, 'Abuja', '2017-02-20', '2019-06-08', '500.00', 'Once', '#6504df');
+(1000, 'Youssoufia test', '2014-10-04', '2015-11-02', '56.04', 'Once', '#440709'),
+(1011, 'New City', '2011-06-20', '2015-06-02', '999.99', 'Once', '#f5f5f5');
 
 --
 -- Indexes for dumped tables
@@ -1067,7 +1064,7 @@ ALTER TABLE `sampletable`
 -- AUTO_INCREMENT for table `sampletable`
 --
 ALTER TABLE `sampletable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1008;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1014;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
