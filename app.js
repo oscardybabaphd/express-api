@@ -21,8 +21,13 @@ db.connect((err) => {
 });
 
 app.use(cors({
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
 }));
+
+app.use((req, res, next) => {
+    res.setHeader('Content-Type', 'application/json');
+    next();
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -36,7 +41,7 @@ app.get("/getall/:pageData/:perPageData", (req, res) => {
         if (result.length > 0) {
             pages = pagination.pager(req.params.pageData, req.params.perPageData, result);
         }
-        res.setHeader('Content-Type', 'application/json');
+
         res.send(pages);
     });
 });
@@ -51,7 +56,7 @@ app.get("/search/:startDate/:endDate/:pageData/:perPageData", (req, res) => {
         if (result.length > 0) {
             pages = pagination.pager(req.params.pageData, req.params.perPageData, result);
         }
-        res.setHeader('Content-Type', 'application/json');
+
         res.send(pages);
     });
 });
@@ -66,7 +71,7 @@ app.post("/update", (req, res) => {
         if (err) {
             throw err;
         }
-        res.setHeader('Content-Type', 'application/json');
+
         res.send({ mesage: 'success', status: "00" });
     });
 });
@@ -77,7 +82,7 @@ app.post("/add", (req, res) => {
         if (err) {
             throw err;
         }
-        res.setHeader('Content-Type', 'application/json');
+
         res.send({ mesage: 'success', status: "00", id: result.insertId });
     })
 });
@@ -88,7 +93,7 @@ app.get("/delete/:id", (req, res) => {
         if (err) {
             throw err;
         }
-        res.setHeader('Content-Type', 'application/json');
+
         res.send({ mesage: 'success', status: "00" });
     })
 });
