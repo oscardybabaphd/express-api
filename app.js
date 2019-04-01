@@ -1,8 +1,8 @@
 const express = require('express');
 const mysql = require('mysql');
-let pagination = require('./pagination');
-let bodyParser = require('body-parser');
-var cors = require('cors');
+const pagination = require('./pagination');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 
 const db = mysql.createConnection({
@@ -26,7 +26,7 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/getall/:_page/:_per_page", (req, res) => {
+app.get("/getall/:pageData/:perPageData", (req, res) => {
     let sql = 'SELECT * FROM sampletable order by id desc';
     db.query(sql, (err, result) => {
         if (err) {
@@ -34,22 +34,22 @@ app.get("/getall/:_page/:_per_page", (req, res) => {
         }
         let pages = {};
         if (result.length > 0) {
-            pages = pagination.pager(req.params._page, req.params._per_page, result);
+            pages = pagination.pager(req.params.pageData, req.params.perPageData, result);
         }
         res.setHeader('Content-Type', 'application/json');
         res.send(pages);
     });
 });
 
-app.get("/search/:start_date/:end_date/:_page/:_per_page", (req, res) => {
-    let sql = `SELECT * FROM sampletable where start_date >= '${req.params.start_date}' and end_date <= '${req.params.end_date}' order by id desc`;
+app.get("/search/:startDate/:endDate/:pageData/:perPageData", (req, res) => {
+    let sql = `SELECT * FROM sampletable where startDate >= '${req.params.startDate}' and endDate <= '${req.params.endDate}' order by id desc`;
     db.query(sql, (err, result) => {
         if (err) {
             throw err;
         }
         let pages = {};
         if (result.length > 0) {
-            pages = pagination.pager(req.params._page, req.params._per_page, result);
+            pages = pagination.pager(req.params.pageData, req.params.perPageData, result);
         }
         res.setHeader('Content-Type', 'application/json');
         res.send(pages);
@@ -59,7 +59,7 @@ app.get("/search/:start_date/:end_date/:_page/:_per_page", (req, res) => {
 app.post("/update", (req, res) => {
     let body = req.body;
     let sql = `UPDATE sampletable set city = '${body.city}',
-    start_date = '${body.start_date}',end_date = '${body.end_date}',
+    startDate = '${body.startDate}',endDate = '${body.endDate}',
     price = ${body.price}, status = '${body.status}', color = '${body.color}' where id = ${body.id}`;
     console.log(sql);
     db.query(sql, (err, result) => {
