@@ -1,7 +1,7 @@
 
 var exports = module.exports = {};
 
-exports.pager = (pageData, perPageData, result) => {
+exports.Pager = (pageData, perPageData, result) => {
     let page = pageData || 1;
     let perPage = perPageData || 10;
     let offset = (page - 1) * perPage;

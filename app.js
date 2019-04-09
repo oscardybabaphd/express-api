@@ -39,9 +39,8 @@ app.get("/getall/:pageData/:perPageData", (req, res) => {
         }
         let pages = {};
         if (result.length > 0) {
-            pages = pagination.pager(req.params.pageData, req.params.perPageData, result);
+            pages = pagination.Pager(req.params.pageData, req.params.perPageData, result);
         }
-
         res.send(pages);
     });
 });
@@ -54,7 +53,7 @@ app.get("/search/:startDate/:endDate/:pageData/:perPageData", (req, res) => {
         }
         let pages = {};
         if (result.length > 0) {
-            pages = pagination.pager(req.params.pageData, req.params.perPageData, result);
+            pages = pagination.Pager(req.params.pageData, req.params.perPageData, result);
         }
 
         res.send(pages);
